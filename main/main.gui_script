@@ -1,3 +1,5 @@
+local rendercam_stripped = require("imports.rendercam_stripped")
+
 local MANAGER = "main:/examples/manager#manager"
 local NODE_CLICK_FX
 local NODE_BTN_GITHUB
@@ -38,7 +40,9 @@ function on_message(self, message_id, message, sender)
 end
 
 local function animate_button(node, action)
-	gui.set_position(NODE_CLICK_FX, vmath.vector3(action.x, action.y, 0))
+	local x, y = rendercam_stripped.screen_to_gui(action.screen_x, action.screen_y, gui.ADJUST_FIT)
+	local position = vmath.vector3(x,y,0)
+	gui.set_position(NODE_CLICK_FX, position)
 	gui.play_particlefx(NODE_CLICK_FX)
 	gui.cancel_animation(node, "scale")
 	gui.set_scale(node, vmath.vector3(1.0,1.0,1.0))
