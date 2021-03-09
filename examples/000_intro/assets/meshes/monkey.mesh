@@ -1,0 +1,4 @@
+material: "/examples/000_intro/assets/meshes/mesh.material"
+vertices: "/examples/000_intro/assets/meshes/suzanne.buffer"
+textures: "/examples/000_intro/assets/images/green.png"
+primitive_type: PRIMITIVE_TRIANGLES
