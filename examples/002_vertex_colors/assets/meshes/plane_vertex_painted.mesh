@@ -1,0 +1,6 @@
+material: "/examples/000_intro/assets/meshes/mesh.material"
+vertices: "/examples/002_vertex_colors/assets/meshes/plane_vertex_painted.buffer"
+textures: "/examples/002_vertex_colors/assets/white_32.png"
+primitive_type: PRIMITIVE_TRIANGLES
+position_stream: "position"
+normal_stream: "normal"
