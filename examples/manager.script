@@ -1,0 +1,83 @@
+local BACK = hash("back")
+local NEXT = hash("next")
+local MAIN_GUI = "main:/main#main_gui"
+
+local ti = table.insert
+
+local examples = {}
+ti(examples, {id = "000", title = "Welcome to Defold Shader Samples!", subtitle = "Move your mouse to change the light position on select models. Tip: Instead of sending messages to every object, we can adjust the position of light sources on many objects at once by using render constants when doing render.draw(predicate, [constants])"})
+ti(examples, {id = "001", title = "Solid Model Color", subtitle = "The model_solid.fp shades the model with a solid color of the tint fragment constant, which is by default set to 1,1,1,1 -> R,G,B,A Try changing this value to 1,0,0,0.5 then press enter and save then go to File -> Hot Reload You can hot reload most resources (use the shortcut of your OS!)"})
+
+local function load_example(self, id)
+	if self.loaded ~= nil then
+		msg.post(self.loaded, "disable")
+		msg.post(self.loaded, "final")
+		msg.post(self.loaded, "unload")
+		self.loaded = nil
+	end
+	local proxy = id .. "#collectionproxy"
+	msg.post(id, "acquire_input_focus")
+	msg.post(proxy, "load")
+end
+
+local function change_index(self, value)
+	msg.post(examples[self.index].id, "release_input_focus")
+	self.index = self.index + value
+	if self.index < 1 then
+		self.index = #examples
+	end
+	if self.index > #examples then
+		self.index = 1
+	end
+	load_example(self, examples[self.index].id)
+	msg.post(MAIN_GUI, "change_title", {title = examples[self.index].title, subtitle = examples[self.index].subtitle})
+end
+
+function init(self)
+	self.loaded = nil
+	self.index = 1
+	change_index(self, 0)
+end
+
+function final(self)
+	-- Add finalization code here
+	-- Learn more: https://defold.com/manuals/script/
+	-- Remove this function if not needed
+end
+
+function update(self, dt)
+	-- Add update code here
+	-- Learn more: https://defold.com/manuals/script/
+	-- Remove this function if not needed
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == BACK then
+		change_index(self, -1)
+	end
+	if message_id == NEXT then
+		change_index(self, 1)
+	end
+	if message_id == hash("proxy_loaded") then
+		msg.post(sender, "enable")
+		self.loaded = sender
+	end	
+end
+
+function on_input(self, action_id, action)
+	-- Add input-handling code here. The game object this script is attached to
+	-- must have acquired input focus:
+	--
+	--    msg.post(".", "acquire_input_focus")
+	--
+	-- All mapped input bindings will be received. Mouse and touch input will
+	-- be received regardless of where on the screen it happened.
+	-- Learn more: https://defold.com/manuals/input/
+	-- Remove this function if not needed
+end
+
+function on_reload(self)
+	-- Add reload-handling code here
+	-- Learn more: https://defold.com/manuals/hot-reload/
+	-- Remove this function if not needed
+end
