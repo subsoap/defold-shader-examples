@@ -130,7 +130,7 @@ embedded_instances {
   "pivot: PIVOT_CENTER\\n"
   "blend_mode: BLEND_MODE_ALPHA\\n"
   "line_break: false\\n"
-  "text: \\\"Welcome to Defold Shader Samples!\\\"\\n"
+  "text: \\\"Welcome to Defold Shader Examples!\\\"\\n"
   "font: \\\"/builtins/fonts/system_font.font\\\"\\n"
   "material: \\\"/examples/000_intro/label_3d.material\\\"\\n"
   "\"\n"

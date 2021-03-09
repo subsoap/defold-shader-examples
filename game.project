@@ -15,7 +15,7 @@ package = com.defold.example.basic3d
 
 [project]
 dependencies = 
-title = Defold Shader Samples
+title = Defold Shader Examples
 
 [physics]
 type = 3D
