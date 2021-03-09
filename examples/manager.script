@@ -8,6 +8,7 @@ local examples = {}
 ti(examples, {id = "000", title = "Welcome to Defold Shader Examples!", subtitle = "Move your mouse to change the light position on select models. Tip: Instead of sending messages to every object, we can adjust the position of light sources on many objects at once by using render constants when doing render.draw(predicate, [constants])"})
 ti(examples, {id = "001", title = "Solid Model Color", subtitle = "The model_solid.fp shades the model with a solid color of the tint fragment constant, which is by default set to 1,1,1,1 -> R,G,B,A Try changing this value to 1,0,0,0.5 then press enter and save then go to File -> Hot Reload You can hot reload most resources (use the shortcut of your OS!)"})
 ti(examples, {id = "002", title = "Vertex Colors", subtitle = "Shade with vertex colors using buffers and vertex declarations (derived from the buffer format). Note that the plane_vertex_painted.mesh has a white_32.png solid white image set as its tex0 - the color info is in the vertices! The quad is single sided and is culled when its only face has its normal away from the camera."})
+ti(examples, {id = "003", title = "Billboards", subtitle = "TODO Billboards on CPU and Billboards on GPU. (This example has other problems to solve too.)"})
 
 local function load_example(self, id)
 	if self.loaded ~= nil then
