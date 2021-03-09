@@ -1,12 +1,5 @@
--- How to paint vertex colors in Blender
--- https://www.youtube.com/watch?v=8mNk6r_bwxI
--- More important info
--- https://forum.defold.com/t/mesh-component/65137
-
 function init(self)
-	-- Add initialization code here
-	-- Learn more: https://defold.com/manuals/script/
-	-- Remove this function if not needed
+	go.animate(".", "euler.y", go.PLAYBACK_LOOP_FORWARD, 360, go.EASING_INOUTSINE, 7)
 end
 
 function final(self)

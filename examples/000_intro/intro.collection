@@ -251,21 +251,6 @@ embedded_instances {
   "  }\n"
   "}\n"
   "components {\n"
-  "  id: \"box2\"\n"
-  "  component: \"/examples/000_intro/assets/meshes/monkey.mesh\"\n"
-  "  position {\n"
-  "    x: -10.0\n"
-  "    y: 2.0\n"
-  "    z: 0.0\n"
-  "  }\n"
-  "  rotation {\n"
-  "    x: -0.70710677\n"
-  "    y: 0.0\n"
-  "    z: 0.0\n"
-  "    w: 0.70710677\n"
-  "  }\n"
-  "}\n"
-  "components {\n"
   "  id: \"box3\"\n"
   "  component: \"/examples/000_intro/assets/meshes/sphere.mesh\"\n"
   "  position {\n"
@@ -338,6 +323,56 @@ embedded_instances {
   position {
     x: 0.0
     y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+embedded_instances {
+  id: "monke"
+  data: "components {\n"
+  "  id: \"box2\"\n"
+  "  component: \"/examples/000_intro/assets/meshes/monkey.mesh\"\n"
+  "  position {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "  }\n"
+  "  rotation {\n"
+  "    x: -0.70710677\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "    w: 0.70710677\n"
+  "  }\n"
+  "}\n"
+  "components {\n"
+  "  id: \"rotate_me\"\n"
+  "  component: \"/examples/000_intro/rotate_me.script\"\n"
+  "  position {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "  }\n"
+  "  rotation {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "    w: 1.0\n"
+  "  }\n"
+  "}\n"
+  ""
+  position {
+    x: -5.0
+    y: 1.0
     z: 0.0
   }
   rotation {
