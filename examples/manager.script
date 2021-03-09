@@ -30,7 +30,7 @@ local function change_index(self, value)
 		self.index = 1
 	end
 	load_example(self, examples[self.index].id)
-	msg.post(MAIN_GUI, "change_title", {title = examples[self.index].title, subtitle = examples[self.index].subtitle})
+	msg.post(MAIN_GUI, "change_title", {id = examples[self.index].id, title = examples[self.index].title, subtitle = examples[self.index].subtitle})
 end
 
 function init(self)
