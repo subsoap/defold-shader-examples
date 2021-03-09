@@ -1,5 +1,6 @@
 local MANAGER = "main:/examples/manager#manager"
 local NODE_CLICK_FX
+local NODE_BTN_GITHUB
 local NODE_BTN_BACK
 local NODE_BTN_NEXT
 local NODE_TEXT_TITLE
@@ -10,6 +11,7 @@ local CHANGE_SUBTITLE = hash("change_subtitle")
 function init(self)
 	msg.post(".", "acquire_input_focus")
 	NODE_CLICK_FX = gui.get_node("click_fx")
+	NODE_BTN_GITHUB = gui.get_node("btn_github")
 	NODE_BTN_BACK = gui.get_node("btn_back")
 	NODE_BTN_NEXT = gui.get_node("btn_next")
 	NODE_TEXT_TITLE = gui.get_node("text_title")
@@ -37,6 +39,12 @@ end
 
 function on_input(self, action_id, action)
 	if action.released then
+		if gui.pick_node(NODE_BTN_GITHUB, action.x, action.y) then
+			sys.open_url("https://github.com/subsoap/defold-shader-examples", {target = "_blank"})
+
+			gui.set_position(NODE_CLICK_FX, vmath.vector3(action.x, action.y, 0))
+			gui.play_particlefx(NODE_CLICK_FX)
+		end		
 		if gui.pick_node(NODE_BTN_BACK, action.x, action.y) then
 			msg.post(MANAGER, "back")
 			
