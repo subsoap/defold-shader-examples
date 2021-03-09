@@ -1,6 +1,6 @@
-mesh: "/builtins/assets/meshes/quad.dae"
+mesh: "/builtins/assets/meshes/cube.dae"
 material: "/builtins/materials/model.material"
-textures: "/assets/images/brown.png"
+textures: "/examples/000_intro/assets/images/green.png"
 skeleton: ""
 animations: ""
 default_animation: ""
