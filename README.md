@@ -12,3 +12,5 @@ This project is heavily inspired by https://wgld.org/ the goals of this project 
 You can right click on shaders and compile them with compile_shader.editor_script to test them and improve performance. This script requires Arm Mobile Studio to be installed. Download and install Arm Mobile Studio from https://developer.arm.com/tools-and-software/graphics-and-gaming/mali-offline-compiler/downloads/
 
 TODO make this project compile with GitHub actions and upload updated HTML5 project to GitHub pages.
+
+Temp web demo: https://subsoap.itch.io/defold-shaders-examples

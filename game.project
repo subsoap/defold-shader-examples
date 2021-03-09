@@ -29,3 +29,9 @@ bundle_identifier = com.defold.example.basic3d
 [input]
 game_binding = /main/input/game.input_bindingc
 
+[html5]
+cssfile = /builtins/manifests/web/dark_theme.css
+show_fullscreen_button = 0
+show_made_with_defold = 0
+scale_mode = stretch
+
