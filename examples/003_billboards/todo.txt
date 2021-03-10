@@ -1,0 +1,3 @@
+Get CPU billboards working to face camera, use go.get_world_transform() to somehow deal with parented transforms?
+
+Add multiple billboard types.
