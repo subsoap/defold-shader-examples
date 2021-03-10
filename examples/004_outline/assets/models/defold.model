@@ -1,0 +1,7 @@
+mesh: "/examples/004_outline/assets/models/defold_smooth.dae"
+material: "/examples/004_outline/outline.material"
+textures: "/examples/000_intro/assets/images/brown.png"
+skeleton: ""
+animations: ""
+default_animation: ""
+name: "unnamed"

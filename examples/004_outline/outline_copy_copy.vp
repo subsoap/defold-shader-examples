@@ -13,6 +13,8 @@ uniform mediump mat4 mtx_view;
 uniform mediump mat4 mtx_proj;
 uniform mediump mat4 mtx_normal;
 uniform mediump vec4 light;
+uniform mediump vec4 outline_color;
+uniform mediump vec4 outline_width;
 
 varying highp vec4 var_position;
 varying mediump vec3 var_normal;
@@ -21,21 +23,13 @@ varying mediump vec4 var_light;
 
 void main()
 {
-
-    mat4 original_matrix = mtx_worldview;
-
-    mat4 model_view;
-    model_view[0] = vec4(length(original_matrix[0].xyz), 0.0, 0.0, 0.0);
-    model_view[1] = vec4(0.0, length(original_matrix[1].xyz), 0.0, 0.0);
-    model_view[2] = vec4(0.0, 0.0, length(original_matrix[2].xyz), 0.0);
-    model_view[3] = original_matrix[3];
-
-    vec4 p = model_view * position;
-
-    var_light = mtx_view * vec4(light.xyz, 1.0);
+    vec4 p = mtx_worldview * vec4(position.xyz, 1.0);
     var_position = p;
+    p = vec4(position.xyz, 1.0);
+    var_light = mtx_view * vec4(light.xyz, 1.0);
     var_texcoord0 = texcoord0;
+    p = vec4(p.xyz + normal * outline_width.x, 1.0);
     var_normal = normalize((mtx_normal * vec4(normal, 0.0)).xyz);
-    gl_Position = mtx_proj * p;
+    gl_Position = mtx_proj * (mtx_worldview * p);
 }
 

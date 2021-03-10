@@ -1,0 +1,7 @@
+mesh: "/examples/004_outline/assets/models/chinese_dragon_smooth_lowpoly.dae"
+material: "/examples/004_outline/outline.material"
+textures: "/examples/000_intro/assets/images/green.png"
+skeleton: ""
+animations: ""
+default_animation: ""
+name: "unnamed"

@@ -13,6 +13,9 @@ uniform mediump mat4 mtx_view;
 uniform mediump mat4 mtx_proj;
 uniform mediump mat4 mtx_normal;
 uniform mediump vec4 light;
+uniform mediump vec4 outline;
+uniform mediump vec4 outline_color;
+uniform mediump vec4 outline_width;
 
 varying highp vec4 var_position;
 varying mediump vec3 var_normal;
@@ -21,21 +24,24 @@ varying mediump vec4 var_light;
 
 void main()
 {
-
-    mat4 original_matrix = mtx_worldview;
-
-    mat4 model_view;
-    model_view[0] = vec4(length(original_matrix[0].xyz), 0.0, 0.0, 0.0);
-    model_view[1] = vec4(0.0, length(original_matrix[1].xyz), 0.0, 0.0);
-    model_view[2] = vec4(0.0, 0.0, length(original_matrix[2].xyz), 0.0);
-    model_view[3] = original_matrix[3];
-
-    vec4 p = model_view * position;
-
+    vec4 p = vec4(position.xyz, 1.0);
     var_light = mtx_view * vec4(light.xyz, 1.0);
-    var_position = p;
     var_texcoord0 = texcoord0;
+
     var_normal = normalize((mtx_normal * vec4(normal, 0.0)).xyz);
-    gl_Position = mtx_proj * p;
+
+    
+    mat4 original_matrix = mtx_worldview;
+    
+    //if (true) {
+        if (outline.x > 0.0) {
+        p = vec4(p.xyz + var_normal * outline_width.x, 1.0);
+
+        // scale whole model
+        // original_matrix[0] = vec4(original_matrix[0].xyz * outline_width.x, original_matrix[0].w);
+        // original_matrix[1] = vec4(original_matrix[1].xyz * outline_width.x, original_matrix[1].w);
+        // original_matrix[2] = vec4(original_matrix[2].xyz * outline_width.x, original_matrix[2].w);
+    }   
+    gl_Position = mtx_proj * (original_matrix * p) ;
 }
 

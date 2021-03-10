@@ -43,6 +43,7 @@ function init(self)
     self.particle_pred = render.predicate({"particle"})
     self.model_pred = render.predicate({"model"})
     self.label_3d_pred = render.predicate({"label_3d"})
+    self.model_outline_pred = render.predicate({"model_outline"})
     
     self.clear_color = vmath.vector4(0, 0, 0, 0)
     self.clear_color.x = sys.get_config("render.clear_color_red", 0)
@@ -88,11 +89,28 @@ function update(self)
 
     -- render models
     --
+    
     render.set_blend_func(render.BLEND_SRC_ALPHA, render.BLEND_ONE_MINUS_SRC_ALPHA)
+    render.set_cull_face(render.FACE_BACK)
     render.enable_state(render.STATE_CULL_FACE)
     render.enable_state(render.STATE_DEPTH_TEST)
     render.set_depth_mask(true)
     render.draw(self.model_pred)
+
+    -- outline models
+    --
+    local constants_outline = render.constant_buffer()
+    constants_outline.tint = vmath.vector4(0.0,0.0,0.0,1.0)
+    constants_outline.outline_width = vmath.vector4(0.1,0.0,0.0,0.0)
+    render.set_cull_face(render.FACE_FRONT)
+    render.draw(self.model_outline_pred, constants_outline)
+
+    local constants_outline_normal = render.constant_buffer()
+    --constants_outline_normal.tint = vmath.vector4(1.0,1.0,1.0,1.0)
+    constants_outline_normal.outline_width = vmath.vector4(0.0,0.0,0.0,0.0)
+    render.set_cull_face(render.FACE_BACK)
+    render.draw(self.model_outline_pred, constants_outline_normal)
+    
     render.disable_state(render.STATE_CULL_FACE)
     render.draw(self.label_3d_pred)
     
