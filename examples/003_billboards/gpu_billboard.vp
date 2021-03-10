@@ -21,8 +21,17 @@ varying mediump vec4 var_light;
 
 void main()
 {
-    //vec4 p = mtx_worldview * vec4(position.xyz, 1.0);
-    vec4 p = mtx_worldview * vec4(0.0, 0.0, 0.0, 1.0 /*scale*/) + vec4(position.xyz, 0.0);
+
+    mat4 originalMatrix = mtx_worldview; // The matrix without billboarding
+
+    mat4 modelView;
+    modelView[0] = vec4(length(originalMatrix[0].xyz), .0, .0, .0);
+    modelView[1] = vec4(.0, length(originalMatrix[1].xyz), .0, .0);
+    modelView[2] = vec4(.0, .0, length(originalMatrix[2].xyz), .0);
+    modelView[3] = originalMatrix[3];
+
+    vec4 p = modelView * position;
+
     var_light = mtx_view * vec4(light.xyz, 1.0);
     var_position = p;
     var_texcoord0 = texcoord0;
