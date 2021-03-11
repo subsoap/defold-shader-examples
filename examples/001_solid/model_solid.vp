@@ -1,4 +1,3 @@
-
 // Positions can be world or local space, since world and normal
 // matrices are identity for world vertex space materials.
 // If world vertex space is selected, you can remove the
@@ -28,4 +27,3 @@ void main()
     var_normal = normalize((mtx_normal * vec4(normal, 0.0)).xyz);
     gl_Position = mtx_proj * p;
 }
-

@@ -10,6 +10,7 @@ ti(examples, {id = "001", title = "Solid Model Color", subtitle = "The model_sol
 ti(examples, {id = "002", title = "Vertex Colors", subtitle = "Shade with vertex colors using buffers and vertex declarations (derived from the buffer format). Note that the plane_vertex_painted.mesh has a white_32.png solid white image set as its tex0 - the color info is in the vertices! The quad is single sided and is culled when its only face has its normal away from the camera."})
 ti(examples, {id = "003", title = "Billboards", subtitle = "TODO Billboards on CPU and Billboards on GPU. (This example has other problems to solve too. TODO fix blending situations.)"})
 ti(examples, {id = "004", title = "Outline", subtitle = "These outlines are created by drawing the models twice. The first time they are set to solid black and scaled up in the outline.vp vertex program."})
+ti(examples, {id = "005", title = "Dynamic Mesh", subtitle = "You can create meshes based on scripting. This mesh was not loaded as a mesh file of some kind, but generated in code."})
 
 local function load_example(self, id)
 	if self.loaded ~= nil then

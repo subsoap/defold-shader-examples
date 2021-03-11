@@ -10,4 +10,3 @@ void main()
 {
     gl_FragColor = tint;
 }
-
