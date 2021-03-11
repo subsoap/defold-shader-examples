@@ -10,9 +10,19 @@ local function mod_zoom(self, amount)
 	if self.zoom < camera_min_zoom then self.zoom = camera_min_zoom end
 	if self.zoom > camera_max_zoom then self.zoom = camera_max_zoom end
 	go.set_position(vmath.vector3(0,0,self.zoom), "zoom")
-	print(self.zoom)
 end
 
+local function reset_camera(self)
+	self.mouse_right_down = false
+	self.turn.x = 0
+	self.turn.y = 0
+	self.turn_target.x = 0
+	self.turn_target.y = 0
+	go.set(".", "euler.x", 0)
+	go.set(".", "euler.y", 0)
+	self.zoom = camera_base_zoom
+	go.set_position(vmath.vector3(0,0,self.zoom), "zoom")
+end
 
 function init(self)
 	msg.post(".", "acquire_input_focus")
@@ -48,9 +58,9 @@ function update(self, dt)
 end
 
 function on_message(self, message_id, message, sender)
-	-- Add message-handling code here
-	-- Learn more: https://defold.com/manuals/message-passing/
-	-- Remove this function if not needed
+	if message_id == hash("reset_camera") then
+		reset_camera(self)
+	end
 end
 
 function on_input(self, action_id, action)
@@ -68,8 +78,6 @@ function on_input(self, action_id, action)
 		self.mouse_right_down = false
 		self.turn.x = 0
 		self.turn.y = 0
-		go.set(".", "euler.x", 0)
-		go.set(".", "euler.y", 0)
 		self.zoom = camera_base_zoom
 		go.set_position(vmath.vector3(0,0,self.zoom), "zoom")
 	end

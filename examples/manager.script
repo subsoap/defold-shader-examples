@@ -22,6 +22,7 @@ local function load_example(self, id)
 	local proxy = id .. "#collectionproxy"
 	msg.post(id, "acquire_input_focus")
 	msg.post(proxy, "load")
+	msg.post("main:/camera#camera_rotate", "reset_camera")
 end
 
 local function change_index(self, value)
